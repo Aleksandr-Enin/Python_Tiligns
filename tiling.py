@@ -54,13 +54,6 @@ class Tiling(object):
             return False
         return True
 
-    def locally_flippable(self, i, j, height_difference):
-        self.lattice[i, j] += height_difference
-        params = itertools.product(range(i - 1, i + 2), range(j - 1, j + 2), [-1, 1])
-        result = np.count_nonzero([self.is_correct_change(*p) for p in params])
-        self.lattice[i, j] -= height_difference
-        return result
-
     def set_temperature(self, temperature):
         self.temperature = temperature
 
